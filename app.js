@@ -1,8 +1,7 @@
 const cardContainer = document.getElementById('pokemon-card');
 
-// Agregamos 'event' como parámetro para poder controlar el formulario
 async function buscar(event) {
-    // Si la función fue llamada por un formulario, evitamos que la página se recargue
+    // ESTA LÍNEA ES VITAL: Detiene el refresco automático del formulario
     if (event) {
         event.preventDefault();
     }
@@ -10,7 +9,7 @@ async function buscar(event) {
     const input = document.getElementById('pokemon-name');
     const nombre = input.value.toLowerCase().trim();
 
-    if (!nombre) return; // Si está vacío, no hace nada
+    if (!nombre) return; 
 
     cardContainer.innerHTML = "<p>Buscando...</p>";
 
@@ -21,6 +20,7 @@ async function buscar(event) {
 
         const data = await response.json();
 
+        // Actualizamos el contenedor con la imagen y datos
         cardContainer.innerHTML = `
             <img src="${data.sprites.front_default}" alt="${data.name}">
             <h2>${data.name.toUpperCase()}</h2>
