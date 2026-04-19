@@ -1,6 +1,12 @@
 const cardContainer = document.getElementById('pokemon-card');
 
-async function buscar() {
+// Agregamos 'event' como parámetro para poder controlar el formulario
+async function buscar(event) {
+    // Si la función fue llamada por un formulario, evitamos que la página se recargue
+    if (event) {
+        event.preventDefault();
+    }
+
     const input = document.getElementById('pokemon-name');
     const nombre = input.value.toLowerCase().trim();
 

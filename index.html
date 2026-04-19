@@ -11,8 +11,10 @@
     <h1>Pokédex API Test</h1>
     
     <div class="search-box">
-        <input type="text" id="pokemon-name" placeholder="Ej: pikachu o 25">
-        <button onclick="buscar()">Buscar</button>
+        <form onsubmit="buscar(event)"> 
+            <input type="text" id="pokemon-name" placeholder="Ej: pikachu o 25">
+            <button type="submit">Buscar</button>
+        </form>
     </div>
 
     <div id="pokemon-card" class="card">
