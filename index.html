@@ -7,12 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-container">
-        <h1>Pokédex API Test</h1>
-        <div id="pokemon-card" class="card">
-            <p>Cargando datos...</p>
-        </div>
+<div class="main-container">
+    <h1>Pokédex API Test</h1>
+    
+    <div class="search-box">
+        <input type="text" id="pokemon-name" placeholder="Ej: pikachu o 25">
+        <button onclick="buscar()">Buscar</button>
     </div>
-    <script src="app.js"></script>
+
+    <div id="pokemon-card" class="card">
+        <p>Escribe un nombre para empezar...</p>
+    </div>
+</div>
+<script src="app.js"></script>
 </body>
 </html>

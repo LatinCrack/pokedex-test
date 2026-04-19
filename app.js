@@ -1,9 +1,18 @@
 const cardContainer = document.getElementById('pokemon-card');
 
-async function fetchPokemon() {
+async function buscar() {
+    const input = document.getElementById('pokemon-name');
+    const nombre = input.value.toLowerCase().trim();
+
+    if (!nombre) return; // Si está vacío, no hace nada
+
+    cardContainer.innerHTML = "<p>Buscando...</p>";
+
     try {
-        // Consultamos a Gengar, por ejemplo
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/94');
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
+        
+        if (!response.ok) throw new Error("Pokémon no encontrado");
+
         const data = await response.json();
 
         cardContainer.innerHTML = `
@@ -13,8 +22,6 @@ async function fetchPokemon() {
             <p>Tipo: ${data.types[0].type.name}</p>
         `;
     } catch (error) {
-        cardContainer.innerHTML = `<p>Error al cargar: ${error}</p>`;
+        cardContainer.innerHTML = `<p style="color:red;">${error.message}</p>`;
     }
 }
-
-fetchPokemon();
